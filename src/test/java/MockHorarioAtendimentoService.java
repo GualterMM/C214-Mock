@@ -30,6 +30,8 @@ public class MockHorarioAtendimentoService implements HorarioAtendimentoService 
             return HorarioAtendimentoConst.SALA_MAL_FORMATADA;
         } else if(id == 906){
             return HorarioAtendimentoConst.PREDIO_MAL_FORMATADO;
+        } else if(id == 907){
+            return HorarioAtendimentoConst.SALA_PREDIO_INCOERENTES;
         } else {
             throw new RegistroInexistenteException("Registro inexistente.");
         }

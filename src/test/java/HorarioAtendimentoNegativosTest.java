@@ -3,8 +3,8 @@ import com.google.gson.JsonSyntaxException;
 import org.junit.Before;
 import org.junit.Test;
 
-import static org.junit.Assert.assertEquals;
-import static org.junit.Assert.assertTrue;
+import static org.junit.Assert.*;
+
 public class HorarioAtendimentoNegativosTest {
     HorarioAtendimentoService horarioAtendimentoService;
     Webpage webpage;
@@ -17,125 +17,73 @@ public class HorarioAtendimentoNegativosTest {
 
     @Test(expected = IDInvalidoException.class)
     public void testeCampoIdInvalido() throws RegistroInexistenteException, IDInvalidoException {
-
-        try {
-            HorarioAtendimento horarioAtendimento = webpage.buscaHorarioAtendimento(-12);
-
-        } catch (RegistroInexistenteException e) {
-            throw e;
-        } catch (IDInvalidoException e) {
-            throw e;
-        }
-
+        HorarioAtendimento horarioAtendimento = webpage.buscaHorarioAtendimento(-12);
     }
 
     @Test(expected = RegistroInexistenteException.class)
     public void testeVerificaRegistroInexistente() throws RegistroInexistenteException, IDInvalidoException {
-        try {
-            HorarioAtendimento horarioAtendimento = webpage.buscaHorarioAtendimento(10);
-        } catch (RegistroInexistenteException e) {
-            throw e;
-        } catch (IDInvalidoException e) {
-            throw e;
-        }
+        HorarioAtendimento horarioAtendimento = webpage.buscaHorarioAtendimento(10);
     }
 
     @Test(expected = NumberFormatException.class)
     public void testeCampoIdMalFormatado() throws RegistroInexistenteException, IDInvalidoException {
         try {
             HorarioAtendimento horarioAtendimento = webpage.buscaHorarioAtendimento(900);
-        } catch (RegistroInexistenteException e) {
-            throw e;
-        } catch (IDInvalidoException e) {
+        } catch (NumberFormatException e) {
             throw e;
         }
-
     }
 
     @Test(expected = JsonSyntaxException.class)
-    public void testeJsonMalFormatado() throws RegistroInexistenteException, IDInvalidoException{
-        try {
-            HorarioAtendimento horarioAtendimento = webpage.buscaHorarioAtendimento(901);
-        } catch (RegistroInexistenteException e) {
-            throw e;
-        } catch (IDInvalidoException e) {
-            throw e;
-        }
-
+    public void testeJsonMalFormatado() throws RegistroInexistenteException, IDInvalidoException {
+        HorarioAtendimento horarioAtendimento = webpage.buscaHorarioAtendimento(901);
     }
 
     @Test
-    public void testePeriodoInvalido() throws RegistroInexistenteException, IDInvalidoException{
-        try {
-            HorarioAtendimento horarioAtendimento = webpage.buscaHorarioAtendimento(902);
+    public void testePeriodoInvalido() throws RegistroInexistenteException, IDInvalidoException {
+        HorarioAtendimento horarioAtendimento = webpage.buscaHorarioAtendimento(902);
 
-            String periodo = horarioAtendimento.getPeriodo();
+        String periodo = horarioAtendimento.getPeriodo();
 
-            assertEquals("Inválido", periodo);
-        } catch (RegistroInexistenteException e) {
-            throw e;
-        } catch (IDInvalidoException e) {
-            throw e;
-        }
-
+        assertEquals("Inválido", periodo);
     }
 
     @Test
-    public void testePredioInvalido() throws RegistroInexistenteException, IDInvalidoException{
-        try {
-            HorarioAtendimento horarioAtendimento = webpage.buscaHorarioAtendimento(903);
+    public void testePredioInvalido() throws RegistroInexistenteException, IDInvalidoException {
+        HorarioAtendimento horarioAtendimento = webpage.buscaHorarioAtendimento(903);
 
-            String predio = horarioAtendimento.getPredio();
+        String predio = horarioAtendimento.getPredio();
 
-            assertEquals("Inválido", predio);
-        } catch (RegistroInexistenteException e) {
-            throw e;
-        } catch (IDInvalidoException e) {
-            throw e;
-        }
-
+        assertEquals("Inválido", predio);
     }
 
     @Test
-    public void testeSalaInvalida() throws RegistroInexistenteException, IDInvalidoException{
-        try {
-            HorarioAtendimento horarioAtendimento = webpage.buscaHorarioAtendimento(904);
+    public void testeSalaInvalida() throws RegistroInexistenteException, IDInvalidoException {
+        HorarioAtendimento horarioAtendimento = webpage.buscaHorarioAtendimento(904);
 
-            String sala = horarioAtendimento.getSala();
+        String sala = horarioAtendimento.getSala();
 
-            assertEquals("Inválido", sala);
-        } catch (RegistroInexistenteException e) {
-            throw e;
-        } catch (IDInvalidoException e) {
-            throw e;
-        }
-
+        assertEquals("Inválido", sala);
     }
 
     @Test(expected = NumberFormatException.class)
-    public void testeCampoSalaMalFormatado() throws RegistroInexistenteException, IDInvalidoException{
-        try {
+    public void testeCampoSalaMalFormatado() throws RegistroInexistenteException, IDInvalidoException, NumberFormatException {
             HorarioAtendimento horarioAtendimento = webpage.buscaHorarioAtendimento(905);
-
-        } catch (RegistroInexistenteException e) {
-            throw e;
-        } catch (IDInvalidoException e) {
-            throw e;
-        }
-
     }
 
     @Test(expected = NumberFormatException.class)
-    public void testeCampoPredioMalFormatado() throws RegistroInexistenteException, IDInvalidoException{
-        try {
-            HorarioAtendimento horarioAtendimento = webpage.buscaHorarioAtendimento(906);
+    public void testeCampoPredioMalFormatado() throws RegistroInexistenteException, IDInvalidoException, NumberFormatException {
+        HorarioAtendimento horarioAtendimento = webpage.buscaHorarioAtendimento(906);
+    }
 
-        } catch (RegistroInexistenteException e) {
-            throw e;
-        } catch (IDInvalidoException e) {
-            throw e;
-        }
+    @Test
+    public void testeSalaPredioIncoerentes() throws RegistroInexistenteException, IDInvalidoException {
+        HorarioAtendimento horarioAtendimento = webpage.buscaHorarioAtendimento(907);
 
+        int sala = Integer.parseInt(horarioAtendimento.getSala());
+        int predio = Integer.parseInt(horarioAtendimento.getPredio());
+
+        assertFalse(sala >= 6 && sala <= 10 && predio == 2);
     }
 
 }

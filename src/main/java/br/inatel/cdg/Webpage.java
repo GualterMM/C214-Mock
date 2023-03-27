@@ -34,8 +34,6 @@ public class Webpage {
 
             return horarioAtendimento;
 
-        } catch (RegistroInexistenteException e){
-            throw e;
         } catch (NumberFormatException e) {
             throw e;
         } catch (JsonSyntaxException e){

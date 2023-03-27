@@ -85,7 +85,7 @@ public class HorarioAtendimentoConst {
             "\"nomeDoProfessor\":\"Professor Professorson\", \n" +
             "\"horarioDeAtendimento\":\"21h30-23h00\", \n" +
             "\"periodo\":\"Matutino\", \n" +
-            "\"sala\":\"1\", \n" +
-            "\"predio\":[\"5\"] }";
+            "\"sala\":\"10\", \n" +
+            "\"predio\":[\"1\"] }";
 
 }
