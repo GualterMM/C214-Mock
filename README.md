@@ -2,8 +2,8 @@
 Um projeto em Java com Maven cobrindo os básicos da utilização de testes unitários utilizando objetos Mock.
 
 ## 🤝 Colaboradores
-Gualter Machado Mesquita (GEC, 1601)
-Isabela Rezende Barbosa da Silva (GEC, 1613)
+Gualter Machado Mesquita (GEC, 1601) <br />
+Isabela Rezende Barbosa da Silva (GEC, 1613) <br />
 
 ## 💻 Pré-requisitos
 
@@ -21,4 +21,4 @@ Com o projeto clonado, abra-o na sua IDE. Certifique-se de puxar as dependência
 
 ## ☕ Usando o projeto
 
-Para fazer uso do projeto, rode os arquivos ```HorarioAtendimentoPositivosTest.java``` e ```HorarioAtendimentoNegativosTest.java```. Sinta-se livre para inspecionar o código e fazer modificações.
+Para fazer uso do projeto, rode os arquivos ```HorarioAtendimentoPositivosTest.java``` e ```HorarioAtendimentoNegativosTest.java```. <br /> Sinta-se livre para inspecionar o código e fazer modificações.
